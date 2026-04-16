@@ -102,7 +102,7 @@ export function Architecture() {
           className="relative border border-signal-500/30 bg-white"
         >
           {/* Top strip — SPATIAL label + examples */}
-          <div className="grid grid-cols-12 gap-x-4 lg:gap-x-6 px-4 lg:px-8 py-4 border-b border-signal-500/20 bg-signal-500/[0.04]">
+          <div className="grid grid-cols-12 gap-x-4 lg:gap-x-6 px-3 sm:px-4 lg:px-8 py-3 sm:py-4 border-b border-signal-500/20 bg-signal-500/[0.04]">
             <div className="col-span-12 md:col-span-7 flex items-baseline gap-3">
               <span className="hud-sm text-signal-700 flex items-center gap-1.5">
                 <span aria-hidden className="live-dot" />
@@ -115,7 +115,7 @@ export function Architecture() {
           </div>
 
           {/* Inner: 3 axis cards + ontology band */}
-          <div className="px-4 lg:px-8 py-8 lg:py-10">
+          <div className="px-3 sm:px-4 lg:px-8 py-6 sm:py-8 lg:py-10">
             {/* Three axis cards */}
             <div className="grid grid-cols-12 gap-x-4 lg:gap-x-6 border-t border-zinc-200">
               {axes.map((axis, i) => (
@@ -202,7 +202,7 @@ export function Architecture() {
           </div>
 
           {/* Bottom strip — spatial wrapper footnote (lifecycle message) */}
-          <div className="px-4 lg:px-8 py-4 border-t border-signal-500/20 bg-signal-500/[0.04]">
+          <div className="px-3 sm:px-4 lg:px-8 py-3 sm:py-4 border-t border-signal-500/20 bg-signal-500/[0.04]">
             <span className="hud-sm text-signal-700/90">{t("spatial.footnote")}</span>
           </div>
         </motion.div>

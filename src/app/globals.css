@@ -388,6 +388,15 @@ html[lang^="zh"] .hud-sm {
 [data-theme="dark"] [data-hero-bg="light"] { opacity: 0; }
 [data-theme="dark"] [data-hero-bg="dark"]  { opacity: 0.7; }
 
+/* iOS Safari + most mobile browsers ignore / break background-attachment:
+   fixed (it visibly scrolls or causes jank). Force scroll-attached on
+   touch / narrow viewports so the photo behaves predictably. */
+@media (max-width: 768px), (hover: none) {
+  [data-hero-bg] {
+    background-attachment: scroll !important;
+  }
+}
+
 /* Smooth tint transition when toggling.
    Tightened because longer transitions pause in throttled / hidden tabs and
    make the toggle look stuck. 180ms is snappy enough to feel instant in

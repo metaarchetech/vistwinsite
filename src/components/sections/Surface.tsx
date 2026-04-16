@@ -94,7 +94,9 @@ export function Surface() {
           transition={{ duration: 0.85, ease: [0.22, 0.7, 0.2, 1] }}
           className="mb-16 lg:mb-20"
         >
-          <div className="relative aspect-[1980/845] w-full overflow-hidden border border-zinc-900/90 bg-zinc-900 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.18)] group">
+          {/* Aspect ratio: tall-ish on mobile so the image isn't a thin
+              sliver; widescreen on desktop. */}
+          <div className="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-[1980/845] w-full overflow-hidden border border-zinc-900/90 bg-zinc-900 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.18)] group">
             <Image
               src={`/screenshots/${t("anchor.src")}`}
               alt={t("anchor.alt")}
