@@ -75,7 +75,12 @@ export function LanguageSwitcher({ onDark = false }: { onDark?: boolean }) {
       {open && (
         <ul
           role="listbox"
-          className={`absolute right-0 top-full mt-2 min-w-[140px] overflow-hidden rounded-md border shadow-lg ${
+          // Mobile (in the bottom row of the mobile menu where this sits on
+          // the LEFT), open the dropdown rightward — `right-0` would push
+          // the panel off the left edge of the viewport. On sm+ (desktop
+          // header where the switcher sits on the RIGHT), revert to
+          // right-aligned so the dropdown doesn't run off the right edge.
+          className={`absolute left-0 sm:left-auto sm:right-0 top-full mt-2 min-w-[140px] overflow-hidden rounded-md border shadow-lg ${
             onDark
               ? "bg-zinc-900 border-zinc-700"
               : "bg-white border-zinc-200"

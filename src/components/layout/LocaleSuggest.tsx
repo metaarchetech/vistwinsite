@@ -69,7 +69,7 @@ export function LocaleSuggest() {
     <div
       role="dialog"
       aria-label="Language preference"
-      className="fixed bottom-4 left-4 right-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:bottom-auto sm:top-20 sm:max-w-fit z-40 pointer-events-auto"
+      className="fixed top-20 left-3 right-3 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:max-w-fit z-40 pointer-events-auto"
     >
       {/* Soft red wash — low opacity (~20%) so the pill reads as a pink-red
           tint, not a loud red banner. Background still picks up enough of
