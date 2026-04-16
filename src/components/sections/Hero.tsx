@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { useShouldAnimate } from "@/hooks/useShouldAnimate";
+import { Link } from "@/i18n/navigation";
 
 export function Hero() {
   const t = useTranslations("Hero");
@@ -110,20 +111,20 @@ export function Hero() {
 
             {/* Right CTA cluster */}
             <div className="col-span-2 md:col-span-4 lg:col-span-2 lg:col-start-11 flex flex-col items-end gap-2">
-              <a
+              <Link
                 href="/#capabilities"
                 className="group hud text-zinc-500 hover:text-signal-600 transition-colors flex items-center gap-1.5"
               >
                 <span data-arrow>↳</span>
                 <span className="link-underline">{t("ctaPrimary")}</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/#architecture"
                 className="group hud text-zinc-500 hover:text-signal-600 transition-colors flex items-center gap-1.5"
               >
                 <span data-arrow>↳</span>
                 <span className="link-underline">{t("ctaSecondary")}</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

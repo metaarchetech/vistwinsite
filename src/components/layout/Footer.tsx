@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export function Footer() {
   const t = useTranslations("Footer");
@@ -77,12 +78,14 @@ function FooterCol({ label, children }: { label: string; children: React.ReactNo
 }
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  // Link from @/i18n/navigation prefixes the current locale automatically,
+  // so /#capabilities on /zh becomes /zh#capabilities.
   return (
-    <a
+    <Link
       href={href}
       className="inline-flex text-sm text-zinc-600 hover:text-zinc-900 transition-colors break-all link-underline"
     >
       {children}
-    </a>
+    </Link>
   );
 }

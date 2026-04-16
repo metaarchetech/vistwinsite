@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { useShouldAnimate } from "@/hooks/useShouldAnimate";
 import { Reveal } from "@/components/ui/Reveal";
+import { Link } from "@/i18n/navigation";
 
 export function CTA() {
   const t = useTranslations("CTA");
@@ -74,13 +75,13 @@ export function CTA() {
             </p>
           </div>
           <div className="col-span-12 md:col-span-6 lg:col-span-3 mt-8 md:mt-0 flex md:flex-col md:items-end gap-6 md:gap-3">
-            <a
+            <Link
               href="/contact"
               className="group hud text-signal-400 hover:text-signal-300 transition-colors flex items-center gap-2"
             >
               <span data-arrow>↳</span>
               <span className="link-underline">{t("button")}</span>
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

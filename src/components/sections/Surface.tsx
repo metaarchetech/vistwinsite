@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useShouldAnimate } from "@/hooks/useShouldAnimate";
 import { Reveal } from "@/components/ui/Reveal";
+import { Link } from "@/i18n/navigation";
 
 // Surface section ─ "this is the actual product, today". The previous
 // sections (Capabilities, Position, Architecture) are conceptual; this one
@@ -164,13 +165,13 @@ export function Surface() {
             <span className="hud-sm text-zinc-500">{t("footnote")}</span>
           </div>
           <div className="col-span-12 md:col-span-6 mt-3 md:mt-0 md:text-right">
-            <a
+            <Link
               href="/#architecture"
               className="group hud text-zinc-500 hover:text-signal-600 transition-colors inline-flex items-center gap-2"
             >
               <span data-arrow>↳</span>
               <span className="link-underline">{t("seeAll")}</span>
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

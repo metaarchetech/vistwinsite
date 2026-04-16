@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useState, useEffect } from "react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -8,10 +8,16 @@ import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
   const t = useTranslations("Nav");
+  const locale = useLocale();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [onDark, setOnDark] = useState(false); // hero is white by default
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // English is the default locale (served at "/"); other locales prefix.
+  // Without this prefix, clicking "/0.2 能力" on /zh would navigate to /
+  // (the English root) at #capabilities — losing the user's language.
+  const localePrefix = locale === "en" ? "" : `/${locale}`;
 
   useEffect(() => {
     const onScroll = () => {
@@ -33,31 +39,40 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // All hrefs prefixed with the current locale so clicking a homepage anchor
+  // on /zh stays on /zh (instead of jumping back to the English root).
+  const home = localePrefix || "/";
   const links = [
-    { href: "/", label: t("home") },
-    { href: "/#capabilities", label: t("services") },
-    { href: "/#surface", label: t("surface") },
-    { href: "/#architecture", label: t("architecture") },
-    { href: "/contact", label: t("contact") },
+    { href: home,                         label: t("home") },
+    { href: `${localePrefix}/#capabilities`, label: t("services") },
+    { href: `${localePrefix}/#surface`,      label: t("surface") },
+    { href: `${localePrefix}/#architecture`, label: t("architecture") },
+    { href: `${localePrefix}/contact`,       label: t("contact") },
   ] as const;
 
+  // `usePathname` from next-intl strips the locale, so "/zh/contact" returns
+  // "/contact". Anchor links also strip the prefix here for the comparison.
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href.replace("/#", "/"));
+    const stripped = href.replace(localePrefix, "") || "/";
+    if (stripped === "/") return pathname === "/";
+    return pathname.startsWith(stripped.replace("/#", "/"));
   };
 
-  // Smart click handler: if a link points back to a place we're already on
-  // (notably "/0.1 首頁" while the user is on /), scroll smoothly instead of
-  // triggering a full re-navigate. Anchor hops within / work natively because
-  // of `scroll-behavior: smooth` in globals.css; this fills the one gap.
+  // Smart click handler: if the home link points back to where we already
+  // are (regardless of locale), scroll smoothly instead of triggering a
+  // full re-navigate. Anchor hops within the same page work natively
+  // thanks to `scroll-behavior: smooth` in globals.css.
   const handleNavClick = (href: string) => (e: React.MouseEvent) => {
-    if (pathname === "/" && href === "/") {
+    // pathname is locale-stripped by next-intl ("/contact" for /zh/contact,
+    // "/" for /zh). Strip locale + hash from href so the comparison is
+    // locale-agnostic.
+    const stripped =
+      (href.replace(localePrefix, "") || "/").replace(/#.*$/, "") || "/";
+    if (pathname === "/" && stripped === "/") {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
-      // Nudge the URL hash off without triggering navigation, so a deep
-      // link to e.g. /#capabilities can still be re-clicked later.
       if (window.location.hash) {
-        history.pushState(null, "", "/");
+        history.pushState(null, "", home);
       }
     }
   };
@@ -121,7 +136,7 @@ export function Header() {
         {/* Right — contact link / language switch / mobile toggle */}
         <div className="flex items-center gap-5">
           <a
-            href="/contact"
+            href={`${localePrefix}/contact`}
             className={`hidden md:inline-flex items-center gap-1.5 hud transition-colors ${
               onDark ? "text-signal-400 hover:text-signal-300" : "text-signal-600 hover:text-signal-700"
             }`}
@@ -191,7 +206,7 @@ export function Header() {
               </a>
             ))}
             <a
-              href="/contact"
+              href={`${localePrefix}/contact`}
               onClick={() => setMobileOpen(false)}
               className={`mt-2 inline-flex items-center gap-1.5 hud ${
                 onDark ? "text-signal-400" : "text-signal-600"
