@@ -12,7 +12,32 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen bg-white text-zinc-900 overflow-hidden flex flex-col">
-      {/* Tactical grid backdrop — hairline on white */}
+      {/* Photo backdrop — TWO layered images (light + dark) with cross-fade
+          via [data-theme]. background-attachment: fixed anchors the image
+          to the viewport so dragging the page doesn't move it (parallax-y
+          feel). opacity is intentionally low so the wordmark stays the
+          dominant focal point. */}
+      <div
+        aria-hidden
+        data-hero-bg="light"
+        className="absolute inset-0 pointer-events-none bg-cover bg-center bg-no-repeat opacity-70 transition-opacity duration-500"
+        style={{
+          backgroundImage: "url('/hero/light.jpg')",
+          backgroundAttachment: "fixed",
+        }}
+      />
+      <div
+        aria-hidden
+        data-hero-bg="dark"
+        className="absolute inset-0 pointer-events-none bg-cover bg-center bg-no-repeat opacity-0 transition-opacity duration-500"
+        style={{
+          backgroundImage: "url('/hero/dark.jpg')",
+          backgroundAttachment: "fixed",
+        }}
+      />
+
+      {/* Tactical grid backdrop — hairline on white, sits OVER the photo
+          so the engineering aesthetic survives even with imagery behind. */}
       <div
         className="absolute inset-0 opacity-[0.55] pointer-events-none"
         style={{
@@ -64,8 +89,10 @@ export function Hero() {
         </div>
       </motion.div>
 
-      {/* Massive wordmark */}
-      <div className="relative flex-1 flex items-center justify-center">
+      {/* Massive wordmark + green subline. The subline is intentionally
+          tiny — letting layout (wordmark above, mono below) and color
+          (the brand signal-green) do the talking. */}
+      <div className="relative flex-1 flex flex-col items-center justify-center">
         <motion.h1
           initial={animated ? { opacity: 0, y: 24 } : false}
           animate={{ opacity: 1, y: 0 }}
@@ -75,6 +102,15 @@ export function Hero() {
         >
           {t("wordmark")}
         </motion.h1>
+        <motion.p
+          initial={animated ? { opacity: 0, y: 8 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 0.7, 0.2, 1] }}
+          className="hud-sm text-signal-600 mt-4 lg:mt-6 text-center px-6"
+          style={{ fontSize: "clamp(0.8125rem, 1.15vw, 0.9375rem)" }}
+        >
+          {t("subline")}
+        </motion.p>
       </div>
 
       {/* Bottom rail — chapter index + bracket brand + scroll cue + CTA */}

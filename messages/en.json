@@ -22,6 +22,7 @@
   },
   "Hero": {
     "wordmark": "VisTwin",
+    "subline": "AI-driven · Building Lifecycle Management",
     "tagline": "A digital twin platform for the built environment. We pull what BIM, simulation, sensors, and operations are each saying separately into one shared spatial substrate — so every decision carries a coordinate, evidence, and a traceable record.",
     "scrollCue": "Scroll to explore",
     "ctaPrimary": "See capabilities",
@@ -29,7 +30,7 @@
   },
   "OneLiner": {
     "kicker": "A note",
-    "text": "Facts scattered across silos, brought back onto one shared spatial substrate. So every decision carries a coordinate, evidence, and a traceable record.",
+    "text": "An AI-driven digital twin platform for the built environment. Simulation and operations woven into one shared working system that spans a building's full lifecycle.",
     "byline": "↳ VisTwin"
   },
   "Capabilities": {
@@ -247,10 +248,10 @@
     "kicker": "Reasonable points of intervention",
     "title": "Where this can plug in",
     "items": [
-      { "id": "/0.1", "name": "Building management",   "description": "After construction ends, BIM stops being a static file. Sensor readings, tickets, events, certification scores — all bound to spatial nodes. The property manager, FM engineer, and maintenance team see the same breathing model. Design-stage decisions stay traceable two decades into operation." },
-      { "id": "/0.2", "name": "Safety management",    "description": "On-site and on-floor personnel, equipment, and environment — all aligned to the model's geometry. Visual detection, fall and pose recognition, zone breaches, PPE compliance — risk is no longer something understood after an incident, but something pointed at in space, in real time." },
-      { "id": "/0.3", "name": "Smart factory",         "description": "Lines, equipment, energy, logistics flow, worker safety — all bound back to the floor. One coordinate system; the line manager, the energy engineer, and the safety lead share the same field. Bottlenecks, anomalies, and savings get pointed at in space, not buried at the intersection of ten reports." },
-      { "id": "/0.4", "name": "Spatial AI decisioning", "description": "LLMs that don't just handle text. Plugged into the spatial substrate, they query sensors, read simulations, run scenarios, open tickets. 'What's wrong today?', 'why is this zone idle?', 'how do we reduce next week's energy?' — answers come from space, not from a report." }
+      { "id": "/0.1", "name": "Operations & maintenance", "description": "After construction ends, BIM stops being a static file — it becomes a living model, queried daily. Sensor readings, structural state, certification scores, and work-order events all bound to spatial nodes. Design-stage decisions stay traceable two decades into operation and decommission." },
+      { "id": "/0.2", "name": "Property management",      "description": "Resident tickets, common-area status, energy allocation, visitor flow — all bound back to the actual floor plan. The property team stops thumbing through spreadsheets; they point at the model to see which unit reported a fault, which fixture needs maintenance, which corridor has the heaviest traffic." },
+      { "id": "/0.3", "name": "Safety monitoring",        "description": "On-site and on-floor personnel, equipment, and environment — all aligned to the model's geometry. Visual detection, fall and pose recognition, zone breaches, PPE compliance — risk is no longer understood after an incident, but pointed at in space, in real time." },
+      { "id": "/0.4", "name": "Smart factory",            "description": "Lines, equipment, energy, logistics flow, worker safety — all bound back to the floor. One coordinate system; the line manager, the energy engineer, and the safety lead share the same field. Bottlenecks, anomalies, and savings get pointed at in space, not buried at the intersection of ten reports." }
     ]
   },
   "CTA": {

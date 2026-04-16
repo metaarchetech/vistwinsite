@@ -382,6 +382,12 @@ html[lang^="zh"] .hud-sm {
   [data-theme="dark"] .border-zinc-900 { border-color: #F4F4F5; }
 }
 
+/* Hero photo backdrop — light/dark cross-fade. Both layers preload so the
+   swap is instant when the user toggles theme; the smooth opacity
+   transition (0.5s) is on the elements themselves. */
+[data-theme="dark"] [data-hero-bg="light"] { opacity: 0; }
+[data-theme="dark"] [data-hero-bg="dark"]  { opacity: 0.7; }
+
 /* Smooth tint transition when toggling.
    Tightened because longer transitions pause in throttled / hidden tabs and
    make the toggle look stuck. 180ms is snappy enough to feel instant in
