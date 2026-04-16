@@ -1,0 +1,307 @@
+{
+  "Metadata": {
+    "title": "VisTwin — A digital twin platform pioneering the built environment",
+    "description": "A digital twin platform for the built environment. We pull what BIM, simulation, sensors, and operational systems each say separately into one shared spatial substrate — for building management, safety, smart factories, and spatial AI."
+  },
+  "Nav": {
+    "home": "Index",
+    "services": "Capabilities",
+    "surface": "Surface",
+    "architecture": "Architecture",
+    "contact": "Contact"
+  },
+  "Hud": {
+    "youAreEntering": "You are now entering",
+    "estLabel": "Established",
+    "estValue": "2026 / Taipei",
+    "scrollLabel": "Scroll",
+    "scrollValue": "to explore",
+    "operatingSystemFor": "Operating layer for the",
+    "operatingSystemForB": "built environment",
+    "copyright": "Copyright © 2026 VisTwin Technology"
+  },
+  "Hero": {
+    "wordmark": "VisTwin",
+    "tagline": "A digital twin platform for the built environment. We pull what BIM, simulation, sensors, and operations are each saying separately into one shared spatial substrate — so every decision carries a coordinate, evidence, and a traceable record.",
+    "scrollCue": "Scroll to explore",
+    "ctaPrimary": "See capabilities",
+    "ctaSecondary": "Convergence"
+  },
+  "OneLiner": {
+    "kicker": "A note",
+    "text": "Facts scattered across silos, brought back onto one shared spatial substrate. So every decision carries a coordinate, evidence, and a traceable record.",
+    "byline": "↳ VisTwin"
+  },
+  "Capabilities": {
+    "kicker": "Our capabilities",
+    "title": "Three layers, one spatial substrate.",
+    "intro": "We're not a rendering studio. We're not a BIM consultancy. We build the operating layer for the built environment's digital twin — simulation outputs, sensor streams, and operational commands, all on one spatial coordinate system. The three layers are mutually visible, mutually writable, and mutually queryable.",
+    "items": [
+      {
+        "id": "/0.1",
+        "name": "Simulation",
+        "description": "Concept-stage physics that used to take days now resolves in seconds — wind, sunlight, circulation, energy, pedestrian comfort — usable while the architect is still in the room. Every computed value is written back to the spatial substrate, queryable later just like a live sensor reading.",
+        "specs": [
+          { "label": "Solver",  "value": "GPU-accelerated · NVIDIA Warp" },
+          { "label": "Latency", "value": "< 5 sec" },
+          { "label": "Output",  "value": "Written to the substrate" }
+        ]
+      },
+      {
+        "id": "/0.2",
+        "name": "Sensor twin",
+        "description": "Sensors, BMS, and ESG metrics are not aggregated into a chart somewhere — they're written directly onto spatial nodes. Temperature, occupancy, CO₂, energy, structural state, indoor air — readable at the exact coordinate where each thing happens.",
+        "specs": [
+          { "label": "Protocols", "value": "MQTT · OPC UA · BACnet planned" },
+          { "label": "Update",    "value": "Sub-second" },
+          { "label": "Scale",     "value": "10k+ points" }
+        ]
+      },
+      {
+        "id": "/0.3",
+        "name": "System bridge",
+        "description": "A read isn't the end — decisions propagate to FM work orders, CMMS scheduling, BMS control, PLC, edge actuators. The spatial substrate isn't read-only; it's the trigger surface for the entire operations stack. The read becomes a write back into the world.",
+        "specs": [
+          { "label": "Endpoints", "value": "CMMS · FM · BMS · PLC · Edge" },
+          { "label": "Channel",   "value": "Bidirectional · read + write" },
+          { "label": "Purpose",   "value": "Decision → action on site" }
+        ]
+      }
+    ]
+  },
+  "Position": {
+    "kicker": "Where we sit",
+    "title": "Honest about the gap we fill",
+    "intro": "Every actor in the built environment sells their own slice — the architect sells visuals, the BIM consultancy sells reports, the IoT platform sells dashboards, the FM platform sells tickets. The same building ends up sliced four ways and stored on four different consultants' drives. We sit in the gap none of them fill — a shared substrate living in space, where those fragments finally sit on the same coordinate system, visible, queryable, and capable of triggering the next action.",
+    "rows": [
+      { "ours": "A shared substrate living in space",              "theirs": "Four siloed systems, none connecting" },
+      { "ours": "BIM queried daily through operation",             "theirs": "BIM put on a hard drive after handover" },
+      { "ours": "ESG sourced from live IoT sensors, streamed in",  "theirs": "ESG sourced from quarterly Excel surveys" },
+      { "ours": "Concept analysis returned in seconds",             "theirs": "Days per CFD run" },
+      { "ours": "Sensor data lives at the coordinate it happens",   "theirs": "Sensor data lives in dashboard charts" },
+      { "ours": "One coordinate system across the whole lifecycle", "theirs": "A new model rebuilt for every phase" }
+    ]
+  },
+  "Architecture": {
+    "kicker": "Ontology · decision substrate",
+    "title": "Data · Logic · System — deciding, in space.",
+    "intro": "Up to this point we've talked about real problems in the built environment. But look one layer deeper — this logic isn't unique to buildings. Any field sliced across multiple systems needs a layer where data, logic, and operations speak on the same coordinate. This is what ontology means in space: DATA enters, LOGIC computes, SYSTEM acts — the syllogism closes inside one spatial frame. Decisions acquire location. Responsibility acquires a trace. The entire field becomes thinkable as one thing. From building management to safety, smart factory to AI-driven spatial decisioning — the same ontology underwrites every domain that needs system-level judgment.",
+    "axes": [
+      {
+        "id": "/0.1",
+        "label": "DATA",
+        "name": "Facts in",
+        "examples": "MQTT · OPC UA · BIM · BMS · ESG metrics · sensors",
+        "description": "Reality enters — sensor readings, BMS values, ESG metrics, BIM geometry, energy, structural state. Every fact carries a timestamp and a spatial address, living at the place it actually occurred."
+      },
+      {
+        "id": "/0.2",
+        "label": "LOGIC",
+        "name": "Computation",
+        "examples": "CFD · Solar · WELL · LEED · EEWH · ML",
+        "description": "Reasoning over facts — CFD, ML models, certification scoring, rule engines — written back as first-class derived properties. The computed becomes as queryable as the measured."
+      },
+      {
+        "id": "/0.3",
+        "label": "SYSTEM",
+        "name": "Action",
+        "examples": "CMMS · FM · BMS · PLC · Edge",
+        "description": "Decisions reached in the ontology propagate back out to the systems that actually move things — FM tickets, CMMS scheduling, BMS control, PLC, edge actuators. Judgment becomes action on the ground."
+      }
+    ],
+    "spatial": {
+      "label": "SPATIAL · USD Prim binding",
+      "examples": "Omniverse · USD · ↳ unique to VisTwin",
+      "footnote": "The syllogism closes in space: DATA → LOGIC → SYSTEM, all standing on coordinates defined by USD Prims. This is the layer other ontology platforms structurally lack — without location, decisions have no traceable record."
+    },
+    "centerKicker": "Ontology layer",
+    "centerTitle": "VisTwin Ontology",
+    "centerSubtitle": "A decision substrate shared across buildings, factories, and sites · maps to BIM · ESG · WELL · LEED · EEWH · IFC · ISO 19650",
+    "footnote": "Designed in v0.1 · first commercial pilot Q4 2026.",
+    "inputAxisLabel": "syllogism",
+    "writesToOntology": "writes to ontology"
+  },
+  "Standards": {
+    "kicker": "Built on",
+    "tagline": "We don't reinvent the standards. We align to international practice — and speak the same language as your review process. EEWH, LEED, IFC, ISO, ASHRAE: the reports line up.",
+    "groups": [
+      {
+        "label": "Environmental physics",
+        "items": [
+          "NOAA Solar Position Algorithm",
+          "ASHRAE Clear Sky Model",
+          "Lawson Pedestrian Comfort",
+          "EN ISO 7730 · Fanger PMV / PPD"
+        ]
+      },
+      {
+        "label": "Green building",
+        "items": [
+          "EEWH 2023",
+          "LEED v4.1",
+          "ISO 14040 / 14044",
+          "EN 15978",
+          "GHG Protocol"
+        ]
+      },
+      {
+        "label": "BIM standards",
+        "items": [
+          "ISO 19650",
+          "IFC 4 · buildingSMART",
+          "AABB Collision Detection"
+        ]
+      },
+      {
+        "label": "AI · detection",
+        "items": [
+          "YOLO v8 · Ultralytics",
+          "Anthropic Claude · Haiku 4.5",
+          "Model Context Protocol (MCP)"
+        ]
+      }
+    ]
+  },
+  "Surface": {
+    "kicker": "Active surface",
+    "title": "Decisions, forming",
+    "intro": "Not mockups. These are windows live inside Omniverse Kit — the operating layer is built and running. Massing studies, glass ratios, pedestrian wind, per-unit daylight, factory energy, site personnel, FM tickets — behind every frame, an architect, a developer, a plant manager, or a facilities engineer is making a real call right now.",
+    "anchor": {
+      "src": "suite.jpg",
+      "alt": "VisusTwin suite running inside Omniverse Kit",
+      "family": "{ suite }",
+      "name": "Live suite",
+      "specs": "Omniverse Kit · nine families online: air / sun / water / carbon / safety / data / intelligence / stage / core"
+    },
+    "tiles": [
+      {
+        "src": "wind-tunnel.jpg",
+        "family": "{ air }",
+        "name": "Wind Tunnel",
+        "specs": "Potential flow · 1200 particles · NVIDIA Warp · flow around three masses"
+      },
+      {
+        "src": "solar-heatmap.jpg",
+        "family": "{ sun }",
+        "name": "Solar Heatmap",
+        "specs": "Per-unit integration · 180 units · NOAA SPA ±0.0003° · daily 24h sweep"
+      },
+      {
+        "src": "wind-vector.jpg",
+        "family": "{ air }",
+        "name": "Wind Environment Report",
+        "specs": "Lawson pedestrian classes · z=150cm · 100×100 grid · export-ready"
+      }
+    ],
+    "footnote": "These are surface. What runs underneath is one schema, shared across industries.",
+    "seeAll": "See what runs underneath"
+  },
+  "Work": {
+    "kicker": "Convergence",
+    "title": "What's coming into focus",
+    "viewAll": "Full trajectory",
+    "items": [
+      {
+        "index": "/01",
+        "phase": "Design",
+        "title": "Building object schema v0.1",
+        "layer": "Ontology",
+        "eta": "Q2 26",
+        "description": "TBox for the built environment — spaces, systems, equipment, sensors, work orders. Pydantic-first, USD-aware. The single shared definition the rest of the platform builds on."
+      },
+      {
+        "index": "/02",
+        "phase": "In build",
+        "title": "Live property pipeline",
+        "layer": "Data",
+        "eta": "Q3 26",
+        "description": "MQTT and OPC UA into Postgres + property graph. Sub-second updates from sensors and BMS land directly on the building object — no dashboard middleman."
+      },
+      {
+        "index": "/03",
+        "phase": "In build",
+        "title": "Derived property pipeline",
+        "layer": "Logic",
+        "eta": "Q3 26",
+        "description": "GPU-accelerated CFD, solar, and occupancy ML. Outputs written back as Derived Properties on the same object. The consumer cannot tell which is measured and which is computed."
+      },
+      {
+        "index": "/04",
+        "phase": "Prototype",
+        "title": "Spatial binding layer",
+        "layer": "Spatial",
+        "eta": "Q4 26",
+        "description": "Bidirectional binding between Ontology Object and USD Prim on an Omniverse stage. Click the Prim, get the Object. Update the Object, the Prim updates."
+      },
+      {
+        "index": "/05",
+        "phase": "Pilot",
+        "title": "First commercial deployment",
+        "layer": "Pilot",
+        "eta": "Q4 26",
+        "description": "End-to-end pilot with a Taipei development partner — full stack from sensor ingest, through derived properties, to spatial readout in a live building."
+      }
+    ]
+  },
+  "Industries": {
+    "kicker": "Reasonable points of intervention",
+    "title": "Where this can plug in",
+    "items": [
+      { "id": "/0.1", "name": "Building management",   "description": "After construction ends, BIM stops being a static file. Sensor readings, tickets, events, certification scores — all bound to spatial nodes. The property manager, FM engineer, and maintenance team see the same breathing model. Design-stage decisions stay traceable two decades into operation." },
+      { "id": "/0.2", "name": "Safety management",    "description": "On-site and on-floor personnel, equipment, and environment — all aligned to the model's geometry. Visual detection, fall and pose recognition, zone breaches, PPE compliance — risk is no longer something understood after an incident, but something pointed at in space, in real time." },
+      { "id": "/0.3", "name": "Smart factory",         "description": "Lines, equipment, energy, logistics flow, worker safety — all bound back to the floor. One coordinate system; the line manager, the energy engineer, and the safety lead share the same field. Bottlenecks, anomalies, and savings get pointed at in space, not buried at the intersection of ten reports." },
+      { "id": "/0.4", "name": "Spatial AI decisioning", "description": "LLMs that don't just handle text. Plugged into the spatial substrate, they query sensors, read simulations, run scenarios, open tickets. 'What's wrong today?', 'why is this zone idle?', 'how do we reduce next week's energy?' — answers come from space, not from a report." }
+    ]
+  },
+  "CTA": {
+    "kicker": "Get in touch",
+    "headline": "Give decisions a coordinate.",
+    "headlineB": "Inside your field.",
+    "description": "What we deliver isn't a render — it's a decision substrate that lives in space. The whole stack and our team, deployed into your building, plant, site, or any field that needs system-level judgment.",
+    "button": "Start a conversation"
+  },
+  "Contact": {
+    "kicker": "Contact",
+    "title": "Tell us what you are building",
+    "subtitle": "We reply to every message — usually within a working day.",
+    "name": "Name",
+    "company": "Organization",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "message": "Project notes",
+    "interest": "Capability of interest",
+    "submit": "Send message",
+    "success": "Message received. We will be in touch shortly.",
+    "office":  { "label": "Office", "value": "Taipei, Taiwan" }
+  },
+  "Cases": {
+    "kicker": "Active surface",
+    "title": "The system, coming into focus",
+    "subtitle": "An ontology forms before it ships. These are the components currently on the active surface — positioned by where each sits on the trajectory from design intent to first deployment.",
+    "filterAll": "All",
+    "filterDesign": "Design",
+    "filterBuild": "In build",
+    "filterPrototype": "Prototype",
+    "filterPilot": "Pilot"
+  },
+  "ChatDock": {
+    "placeholder": "Ask anything…",
+    "label": "AI assistant · coming soon",
+    "body": "This dock is a placeholder for now. Once the AI is wired in, the conversation thread will appear here."
+  },
+  "Footer": {
+    "tagline": "A coordinate for every decision.",
+    "company": "VisTwin Technology Co., Ltd.",
+    "address": "Taipei, Taiwan",
+    "rights": "All rights reserved.",
+    "sections": {
+      "company": "Company",
+      "work": "Convergence",
+      "contact": "Contact"
+    },
+    "collab": {
+      "label": "Research collaboration",
+      "partner": "Shih Chien University · VisionBase Lab"
+    }
+  }
+}

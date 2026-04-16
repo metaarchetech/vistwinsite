@@ -1,26 +1,403 @@
+/* External font loading — must precede other rules per CSS spec.
+   ─────────────────────────────────────────────────────────────────────────
+   LOCKED font choice for this site:
+     • CJK   = Chiron Hei HK (千鳥香港黑體) — HK modern grotesque, disciplined
+               terminals, tight letter spacing. Variable file 200–900,
+               cn-font-split chunked WOFF2 via jsDelivr (npm package exposes
+               family name as "Chiron Hei HK WS" — WS = WebSafe).
+     • Latin = Space Grotesk — geometric retro-future. Loaded via next/font
+               in app/layout.tsx, exposed as --font-space-grotesk.
+     • Mono  = JetBrains Mono — HUD labels. Loaded via next/font.
+     • Fallback CJK = Noto Sans TC — only kicks in if Chiron fails to load.
+
+   Earlier rounds shopped multiple alternates (MiSans, LXGW Neo XiHei, Smiley
+   Sans, Satoshi, Host Grotesk, Bricolage) via the FontSwitcher dev tool. The
+   FontSwitcher and all alternate-font imports have been removed now that the
+   choice is locked — see git history if a future round needs to re-compare.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* CJK · Chiron Hei HK — variable font (200-900), cn-font-split chunked WOFF2.
+   NB: this package exposes the family as "Chiron Hei HK WS" (WS = WebSafe). */
+@import url("https://cdn.jsdelivr.net/npm/chiron-hei-hk-webfont@2.6.8/css/vf.css");
+
+/* CJK · Noto Sans TC — last-resort fallback if Chiron fails. */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap");
+
+/* Tailwind v4 — sits in the @import block per CSS spec. */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Zinc — true neutral steel grey, no warmth */
+  --color-zinc-50: #FAFAFA;
+  --color-zinc-100: #F4F4F5;
+  --color-zinc-150: #ECECEE;
+  --color-zinc-200: #E4E4E7;
+  --color-zinc-300: #D4D4D8;
+  --color-zinc-400: #A1A1AA;
+  --color-zinc-500: #71717A;
+  --color-zinc-600: #52525B;
+  --color-zinc-700: #3F3F46;
+  --color-zinc-800: #27272A;     /* steel grey */
+  --color-zinc-900: #18181B;     /* deep steel */
+  --color-zinc-950: #09090B;     /* near-black, used sparingly */
+
+  /* Signal — NVIDIA-adjacent tech green, accent only */
+  --color-signal-50:  #F2FAE0;
+  --color-signal-100: #E1F4BC;
+  --color-signal-300: #B7E25C;
+  --color-signal-400: #9DD11F;
+  --color-signal-500: #76B900;   /* primary */
+  --color-signal-600: #5C9300;
+  --color-signal-700: #4A7700;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Font tokens live in a non-`inline` @theme so the inner var() references
+   ARE preserved as CSS variables (not substituted at build time). The
+   FontSwitcher dev tool is gone, but keeping the var() indirection makes
+   it cheap to swap fonts again later without touching Tailwind tokens. */
+@theme {
+  --font-sans: var(--latin-font, var(--font-space-grotesk)), var(--cn-font, "Chiron Hei HK WS"), "Noto Sans TC", system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-display: var(--latin-font, var(--font-space-grotesk)), var(--cn-font, "Chiron Hei HK WS"), "Noto Sans TC", system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-mono: var(--font-mono-jb), var(--cn-font, "Chiron Hei HK WS"), ui-monospace, monospace;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* IMPORTANT: --font-sans / --font-display / --font-mono are RE-DECLARED here
+   on body (not just at :root via @theme) because CSS custom properties resolve
+   in the scope of the element where they're DEFINED. The var() indirection
+   through --cn-font / --latin-font is preserved as a (minor) future-proofing
+   hook — swapping fonts again later is one CSS line. */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  --cn-font: "Chiron Hei HK WS";
+  --latin-font: var(--font-space-grotesk);
+  --cn-wght-body: 400;
+  /* Display weight 900 — Chiron Hei HK is a variable font 200–900 so this
+     hits a real axis position. Space Grotesk caps at 700 on Google Fonts,
+     so Latin glyphs in headlines render at 700 regardless. Swap Latin to
+     Geist / Manrope / Inter if a true 900 Latin is needed. */
+  --cn-wght-display: 900;
+
+  --font-sans: var(--latin-font), var(--cn-font), "Noto Sans TC", system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-display: var(--latin-font), var(--cn-font), "Noto Sans TC", system-ui, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-mono: var(--font-mono-jb), var(--cn-font), ui-monospace, monospace;
+
+  background: #ffffff;
+  color: var(--color-zinc-900);
+  font-family: var(--font-sans);
+  font-weight: var(--cn-wght-body);
+  font-variation-settings: "wght" var(--cn-wght-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Chiron Hei HK ships discrete weights (400/500/700/900) — anything between
+   snaps to the nearest. We pin display to 700 above so this is moot. */
+
+/* Tabular numerals */
+.tabular {
+  font-feature-settings: "tnum", "lnum";
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* Display headlines — heaviest weight available, tight tracking, mechanical.
+   Chiron Hei HK is loaded as a variable font (200–900) so font-variation-
+   settings reaches a true 900 axis position for CJK glyphs. Space Grotesk
+   only loads up to 700 (Google Fonts cap), so Latin glyphs snap to 700. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-variation-settings: "wght" 900;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+/* CJK-tuned display: relax tracking + line-height + use slider-driven weight,
+   because at large sizes Han glyphs read worse when over-tightened.
+   Opt-in via .display-cjk — applied only to elements whose text content is
+   primarily Chinese. The previous version applied this globally to every
+   .display in :lang(zh), which mistuned English headlines (most of the zh
+   locale is now English titles + Chinese annotations). */
+.display-cjk {
+  letter-spacing: -0.005em;
+  line-height: 1.02;
+  font-weight: var(--cn-wght-display);
+  font-variation-settings: "wght" var(--cn-wght-display);
+}
+
+/* In the Chinese locale our typographic pattern is: English headline carries
+   the visual weight, Chinese paragraphs sit underneath as explanation. CJK
+   glyphs read about 6–8% larger than Latin at the same point size because
+   they fill the em-box — so we trim non-display text down a touch to keep the
+   English ↔ Chinese pairing balanced. Display headlines (mostly English now)
+   stay at their full size. */
+html[lang^="zh"] p,
+html[lang^="zh"] li,
+html[lang^="zh"] dd,
+html[lang^="zh"] dt,
+:lang(zh) p,
+:lang(zh) li,
+:lang(zh) dd,
+:lang(zh) dt {
+  font-size: 0.93em;
+}
+/* Don't shrink HUD strings — they're already at hud-sm/hud sizes and use mono
+   metrics, so further shrinking makes them illegible. Restore their absolute
+   px values explicitly (the :lang() shrink rule above otherwise out-specs
+   the .hud / .hud-sm class declarations). */
+html[lang^="zh"] .hud,
+:lang(zh) .hud {
+  font-size: 11px;
+}
+html[lang^="zh"] .hud-sm,
+:lang(zh) .hud-sm {
+  font-size: 10px;
+}
+
+/* HUD label — mono uppercase, tight. Latin uses Geist Mono / JetBrains Mono.
+   For CJK chars in this stack, the active CJK font kicks in. */
+.hud {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-feature-settings: "tnum", "lnum";
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.hud-sm {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-feature-settings: "tnum", "lnum";
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* When the active locale is Chinese, HUD labels keep mono character but skip
+   uppercase (CJK has no case). */
+:lang(zh) .hud,
+:lang(zh) .hud-sm,
+html[lang^="zh"] .hud,
+html[lang^="zh"] .hud-sm {
+  text-transform: none;
+  letter-spacing: 0.05em;
+}
+
+/* Live indicator — pulsing green dot */
+.live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--color-signal-500);
+  box-shadow: 0 0 0 0 rgba(118, 185, 0, 0.5);
+  animation: live-pulse 2.2s ease-out infinite;
+}
+@keyframes live-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(118, 185, 0, 0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(118, 185, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(118, 185, 0, 0); }
+}
+
+/* Subtle film-grain noise */
+.noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* Selection — green */
+::selection {
+  background: var(--color-signal-500);
+  color: var(--color-zinc-900);
+}
+
+/* ─── Hover micro-interactions ──────────────────────────────────────────────
+   Three small, composable utilities to give the site "life". All use the
+   same expo.out cubic-bezier as the JS Reveal primitives — ease curve is the
+   single source of consistency across CSS hover and scroll-triggered motion.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Animated underline — line draws from left on hover, retracts to right on
+   leave. Uses a linear-gradient as the bg image so we can transition just the
+   background-size, which hardware-composites smoothly. */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.25s ease-out;
+  padding-bottom: 2px;
+}
+.link-underline:hover,
+.group:hover .link-underline {
+  background-size: 100% 1px;
+}
+
+/* Arrow shift — child element marked with [data-arrow] slides right on
+   parent hover. Pair with `group` on the parent (e.g. <a class="group">). */
+[data-arrow] {
+  display: inline-block;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.group:hover [data-arrow] {
+  transform: translateX(4px);
+}
+
+/* Row accent — a hairline that sits at the left edge of a hoverable row and
+   draws down on hover. Apply to a parent with `position: relative` and
+   `overflow: hidden`; the ::before pseudo-element handles the line itself. */
+.row-accent {
+  position: relative;
+}
+.row-accent::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-signal-500);
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.row-accent:hover::before {
+  transform: scaleY(1);
+}
+
+/* Subtle row hover background — matches the row-accent pattern; gives the
+   row a near-imperceptible lift in tone on hover. Use alongside row-accent. */
+.row-tint {
+  transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.row-tint:hover {
+  background-color: rgba(118, 185, 0, 0.025);
+}
+
+/* ─── Dark theme ──────────────────────────────────────────────────────────
+   Activated by `[data-theme="dark"]` on <html> (set by ThemeToggle + the
+   anti-FOUC inline script in app/layout.tsx).
+
+   Strategy: explicit per-utility overrides under `[data-theme="dark"]`.
+   We can't use CSS-var-swap because Tailwind v4's `@theme inline` compiles
+   the zinc tokens to LITERAL hex values in each utility (e.g. text-zinc-900
+   becomes `color: #18181B` directly, not `color: var(--color-zinc-900)`).
+
+   Mirror flip preserves semantics — same utility class, inverted hex:
+     bg-white         → near-black base
+     bg-zinc-50       → deep zinc (was lightest, now darkest visible bg)
+     bg-zinc-900      → kept dark-but-distinct so sections that were dark in
+                        light mode stay visually different from neighbors
+     text-zinc-{900..400} → flipped to corresponding light values
+     border-zinc-{200,300} → flipped to dark borders
+
+   Signal greens are UNCHANGED (brand promise: "一樣的綠"). Only signal-700,
+   which reads too dark on a dark bg, is lifted to stay legible.
+
+   Var overrides are kept too — they cover opacity-modified classes
+   (bg-signal-500/[0.04], border-signal-500/30 etc.) which Tailwind v4
+   resolves through color-mix() against the live var value.
+   ───────────────────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  /* `.bg-white` resolves through var(--color-white) — overriding here flips
+     it everywhere without needing a per-class rule. */
+  --color-white: #09090B;
+  /* True mirror flip: zinc-50 ↔ zinc-950, 100 ↔ 900, 200 ↔ 800, 300 ↔ 700,
+     400 ↔ 600, 500 unchanged. Matches the utility-override block below so
+     opacity-modified utilities (bg-zinc-900/30 etc.) resolve consistently. */
+  --color-zinc-50:  #09090B;
+  --color-zinc-100: #18181B;
+  --color-zinc-150: #1F1F22;
+  --color-zinc-200: #27272A;
+  --color-zinc-300: #3F3F46;
+  --color-zinc-400: #52525B;
+  --color-zinc-500: #71717A;
+  --color-zinc-600: #A1A1AA;
+  --color-zinc-700: #D4D4D8;
+  --color-zinc-800: #E4E4E7;
+  --color-zinc-900: #F4F4F5;
+  --color-zinc-950: #FAFAFA;
+  --color-signal-700: #B7E25C;
+}
+[data-theme="dark"] body {
+  background-color: #09090B;
+  color: #FAFAFA;
+}
+
+/* Per-utility overrides MUST sit inside @layer utilities — otherwise Tailwind
+   v4's pipeline treats `[data-theme="dark"] .text-zinc-900` as a duplicate
+   utility definition and strips it from the compiled output. Putting it in
+   the utilities layer makes the cascade resolve naturally: same layer, ours
+   has higher specificity (the data-theme attribute selector). */
+@layer utilities {
+  /* Backgrounds — TRUE mirror flip. Sections that were dark in light mode
+     become LIGHT in dark mode, and vice versa. The CTA section (originally
+     bg-zinc-900 with light text) inverts to a bright slab with dark text in
+     dark mode — same visual hierarchy, fully inverted palette.
+       light value  ↔  dark value (mirror across the 500 mid-point):
+       50  (#FAFAFA) ↔  950 (#09090B)
+       100 (#F4F4F5) ↔  900 (#18181B)
+       200 (#E4E4E7) ↔  800 (#27272A)
+       300 (#D4D4D8) ↔  700 (#3F3F46)
+       400 (#A1A1AA) ↔  600 (#52525B)
+       500 (#71717A) — unchanged
+  */
+  [data-theme="dark"] .bg-zinc-50   { background-color: #09090B; }
+  [data-theme="dark"] .bg-zinc-100  { background-color: #18181B; }
+  [data-theme="dark"] .bg-zinc-150  { background-color: #1F1F22; }
+  [data-theme="dark"] .bg-zinc-200  { background-color: #27272A; }
+  [data-theme="dark"] .bg-zinc-300  { background-color: #3F3F46; }
+  [data-theme="dark"] .bg-zinc-700  { background-color: #D4D4D8; }
+  [data-theme="dark"] .bg-zinc-800  { background-color: #E4E4E7; }
+  [data-theme="dark"] .bg-zinc-900  { background-color: #FAFAFA; }
+  [data-theme="dark"] .bg-zinc-950  { background-color: #FFFFFF; }
+
+  /* Text — mirror flip same as bg */
+  [data-theme="dark"] .text-zinc-100 { color: #18181B; }
+  [data-theme="dark"] .text-zinc-200 { color: #27272A; }
+  [data-theme="dark"] .text-zinc-300 { color: #3F3F46; }
+  [data-theme="dark"] .text-zinc-400 { color: #52525B; }
+  [data-theme="dark"] .text-zinc-500 { color: #71717A; }
+  [data-theme="dark"] .text-zinc-600 { color: #A1A1AA; }
+  [data-theme="dark"] .text-zinc-700 { color: #D4D4D8; }
+  [data-theme="dark"] .text-zinc-800 { color: #E4E4E7; }
+  [data-theme="dark"] .text-zinc-900 { color: #F4F4F5; }
+  [data-theme="dark"] .text-signal-700 { color: #B7E25C; }
+
+  /* Borders */
+  [data-theme="dark"] .border-zinc-100 { border-color: #18181B; }
+  [data-theme="dark"] .border-zinc-200 { border-color: #27272A; }
+  [data-theme="dark"] .border-zinc-300 { border-color: #3F3F46; }
+  [data-theme="dark"] .border-zinc-700 { border-color: #D4D4D8; }
+  [data-theme="dark"] .border-zinc-900 { border-color: #F4F4F5; }
+}
+
+/* Smooth tint transition when toggling.
+   Tightened because longer transitions pause in throttled / hidden tabs and
+   make the toggle look stuck. 180ms is snappy enough to feel instant in
+   active browsers while still being perceptibly smooth. */
+html, body, section, .bg-white, .bg-zinc-50, .bg-zinc-100, .bg-zinc-150,
+.bg-zinc-200, .bg-zinc-900 {
+  transition: background-color 0.18s ease-out,
+              color 0.18s ease-out,
+              border-color 0.18s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

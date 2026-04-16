@@ -1,0 +1,307 @@
+{
+  "Metadata": {
+    "title": "VisTwin 維思孿生 — 建築產業先行的數位孿生平台",
+    "description": "為建成環境打造的數位孿生平台。把散落在 BIM、模擬、感測與營運系統中的事實，收進一份共享的空間底層——服務建築管理、工安、智慧工廠與 AI 驅動的空間決策。"
+  },
+  "Nav": {
+    "home": "首頁",
+    "services": "能力",
+    "surface": "實機",
+    "architecture": "架構",
+    "contact": "聯絡"
+  },
+  "Hud": {
+    "youAreEntering": "您正進入",
+    "estLabel": "成立於",
+    "estValue": "2026 / 台北",
+    "scrollLabel": "下滑",
+    "scrollValue": "繼續探索",
+    "operatingSystemFor": "建成環境的",
+    "operatingSystemForB": "作業系統層",
+    "copyright": "Copyright © 2026 維思孿生科技"
+  },
+  "Hero": {
+    "wordmark": "VisTwin",
+    "tagline": "為建成環境打造的數位孿生平台。把散落在 BIM、模擬、感測與營運系統中的事實，收進一份共享的空間底層——讓每一個決策，都有座標、有證據、有可追溯的軌跡。",
+    "scrollCue": "下滑探索",
+    "ctaPrimary": "See capabilities",
+    "ctaSecondary": "Convergence"
+  },
+  "OneLiner": {
+    "kicker": "A note",
+    "text": "散落在不同系統裡的事實，回到同一個空間底層。讓每一個決策都有座標、有證據、有軌跡。",
+    "byline": "↳ VisTwin 維思孿生"
+  },
+  "Capabilities": {
+    "kicker": "Our capabilities",
+    "title": "三層作業，同一座空間底層",
+    "intro": "我們不是 rendering 工作室，也不是 BIM 顧問公司。我們建的是建成環境的數位孿生作業層——把模擬結果、感測讀數、營運系統的指令，都收進同一套空間座標系。三層之間互相可見、互相可寫、互相可被詢問。",
+    "items": [
+      {
+        "id": "/0.1",
+        "name": "Simulation",
+        "description": "把以往要跑數天的物理推算壓到秒級——風、光、人流、能耗、行人風安全——在概念與設計早期就能實質發揮作用。每一次計算的結果都寫回空間底層，未來和感測讀數一樣可被查詢。",
+        "specs": [
+          { "label": "求解器",   "value": "GPU 加速 · NVIDIA Warp" },
+          { "label": "延遲",     "value": "< 5 秒" },
+          { "label": "輸出",     "value": "寫回空間底層" }
+        ]
+      },
+      {
+        "id": "/0.2",
+        "name": "Sensor twin",
+        "description": "感測器、BMS、ESG 度量不是匯總進某個儀表板的圖表，而是直接落到空間節點上——溫度、人流、CO₂、用電、結構讀數、室內空氣品質——都在它們發生的座標點被讀到、被疊加、被推理。",
+        "specs": [
+          { "label": "通訊協定", "value": "MQTT · OPC UA · BACnet 規劃中" },
+          { "label": "更新頻率", "value": "次秒級" },
+          { "label": "節點規模", "value": "10k+ 點" }
+        ]
+      },
+      {
+        "id": "/0.3",
+        "name": "System bridge",
+        "description": "判斷不是讀出來就結束——回到 FM 工單、CMMS 派工、BMS 控制、PLC、邊緣執行器。空間底層不是只讀的，它是整個營運系統的觸發點。讀進來的事實，變成寫出去的動作。",
+        "specs": [
+          { "label": "對接系統", "value": "CMMS · FM · BMS · PLC · Edge" },
+          { "label": "通道",     "value": "雙向 · 讀 + 寫" },
+          { "label": "用途",     "value": "決策 → 現場動作" }
+        ]
+      }
+    ]
+  },
+  "Position": {
+    "kicker": "Where we sit",
+    "title": "Honest about the gap we fill",
+    "intro": "建成環境裡的每個角色都在賣自己的一小片——事務所賣視覺、BIM 顧問賣報告、IoT 平台賣儀表板、FM 平台賣工單。同一棟建築被切成四份，住在四個顧問的硬碟裡。我們待在那塊沒人填補的空缺裡——一座活在空間裡的共享基底，讓這些碎片在同一個座標系上被同時看見、同時被查詢、同時可以驅動下一個動作。",
+    "rows": [
+      { "ours": "一座活在空間裡的共享基底",                  "theirs": "四套各自為政的系統，互相不通" },
+      { "ours": "BIM 在維運期天天被查詢",                   "theirs": "BIM 落成後就放硬碟裡了" },
+      { "ours": "ESG 度量源頭是感測器，即時灌入",            "theirs": "ESG 度量源頭是季報、Excel、人工填寫" },
+      { "ours": "概念分析以秒為單位回饋",                    "theirs": "一次 CFD 跑數天" },
+      { "ours": "感測數據活在它發生的座標上",                "theirs": "感測數據活在 dashboard 圖表中" },
+      { "ours": "整段生命週期共用同一個座標系",               "theirs": "每個生命階段重做一次模型" }
+    ]
+  },
+  "Architecture": {
+    "kicker": "Ontology · 決策底層",
+    "title": "DATA · LOGIC · SYSTEM —— 在空間裡形成決策",
+    "intro": "到這裡為止，我們談的是建成環境的實際問題。但往下一層看，這套邏輯不是建築獨有——任何被切割成多個系統的場域，都需要一層能讓資料、邏輯、營運系統在同一個座標上同時發言的底層。這就是 ontology 在空間裡的意義：DATA 進入、LOGIC 運算、SYSTEM 執行——三段論在同一個空間裡閉合。決策有了位置，責任有了軌跡，整個場域可以被一起思考。我們承接的，從建築管理、工安、智慧工廠到 AI 驅動的空間決策——同一份 ontology 跑遍各種需要系統級判斷的領域。",
+    "axes": [
+      {
+        "id": "/0.1",
+        "label": "DATA",
+        "name": "事實進入",
+        "examples": "MQTT · OPC UA · BIM · BMS · ESG 度量 · 感測器",
+        "description": "現實的事實——感測器讀數、BMS 讀值、ESG 度量、BIM 幾何、用電、結構狀態——進入 ontology。每一筆事實帶著時間戳跟空間座標，活在它真正發生的那個位置上。"
+      },
+      {
+        "id": "/0.2",
+        "label": "LOGIC",
+        "name": "推理運算",
+        "examples": "CFD · 日照 · WELL · LEED · EEWH · ML",
+        "description": "事實之上做的推理——CFD、ML 模型、認證評分、規則引擎——的輸出，以一等公民的衍生屬性寫回同一份 ontology。被算出來的，跟被量到的，享有相同的可查詢性。"
+      },
+      {
+        "id": "/0.3",
+        "label": "SYSTEM",
+        "name": "決策執行",
+        "examples": "CMMS · FM · BMS · PLC · Edge",
+        "description": "在 ontology 上達成的決策反向穿回實際執行的系統——FM 工單、CMMS 派工、BMS 控制、PLC、邊緣執行器。讀進來的判斷，變成寫出去的現場動作。"
+      }
+    ],
+    "spatial": {
+      "label": "SPATIAL · USD Prim 綁定",
+      "examples": "Omniverse · USD · ↳ VisTwin 獨有",
+      "footnote": "三段論在空間裡閉合：DATA → LOGIC → SYSTEM，全程站在 USD Prim 定義的座標上。其他 ontology 平台缺的是這一層——當決策沒有位置，責任就沒有軌跡。"
+    },
+    "centerKicker": "Ontology 層",
+    "centerTitle": "VisTwin Ontology",
+    "centerSubtitle": "建築 · 廠區 · 工地共用的決策底層 · 對接 BIM · ESG · WELL · LEED · EEWH · IFC · ISO 19650",
+    "footnote": "v0.1 設計中 · 首個商用 pilot 預定 2026 Q4。",
+    "inputAxisLabel": "三段論",
+    "writesToOntology": "寫入 ontology"
+  },
+  "Standards": {
+    "kicker": "Built on",
+    "tagline": "我們不重新發明標準。對齊國際慣例，跟你的審查系統說同一種話——EEWH、LEED、IFC、ISO、ASHRAE，報告直接對得上。",
+    "groups": [
+      {
+        "label": "環境物理",
+        "items": [
+          "NOAA Solar Position Algorithm",
+          "ASHRAE Clear Sky Model",
+          "Lawson Pedestrian Comfort",
+          "EN ISO 7730 · Fanger PMV / PPD"
+        ]
+      },
+      {
+        "label": "綠建築",
+        "items": [
+          "EEWH 2023",
+          "LEED v4.1",
+          "ISO 14040 / 14044",
+          "EN 15978",
+          "GHG Protocol"
+        ]
+      },
+      {
+        "label": "BIM 資訊",
+        "items": [
+          "ISO 19650",
+          "IFC 4 · buildingSMART",
+          "AABB Collision Detection"
+        ]
+      },
+      {
+        "label": "AI · 偵測",
+        "items": [
+          "YOLO v8 · Ultralytics",
+          "Anthropic Claude · Haiku 4.5",
+          "Model Context Protocol (MCP)"
+        ]
+      }
+    ]
+  },
+  "Surface": {
+    "kicker": "Active surface",
+    "title": "正在形成的決策",
+    "intro": "下面這些不是 mockup。是 Omniverse Kit 裡正在運作的視窗——這套作業層我們已經做出來了。量體研究、玻璃比例、行人風、單戶日照、廠區能耗、工地人員軌跡、FM 工單——每一張背後，都是某個建築師、開發商、廠長、設施經理，當下正在做的決定。",
+    "anchor": {
+      "src": "suite.jpg",
+      "alt": "Omniverse Kit 中 VisusTwin 套件運作中的畫面",
+      "family": "{ suite }",
+      "name": "全套運作中",
+      "specs": "Omniverse Kit · 風／日／水／碳／安全／資料／智能／場域／核心 九個家族同時上線"
+    },
+    "tiles": [
+      {
+        "src": "wind-tunnel.jpg",
+        "family": "{ air }",
+        "name": "風洞",
+        "specs": "Potential flow · 1200 顆粒子 · NVIDIA Warp · 三棟量體繞流"
+      },
+      {
+        "src": "solar-heatmap.jpg",
+        "family": "{ sun }",
+        "name": "日照熱圖",
+        "specs": "180 戶逐戶積分 · NOAA SPA ±0.0003° · DAILY 24h 累計"
+      },
+      {
+        "src": "wind-vector.jpg",
+        "family": "{ air }",
+        "name": "風環境報告",
+        "specs": "Lawson 行人風分級 · z=150cm · 100×100 grid · 可導出"
+      }
+    ],
+    "footnote": "這些只是表面。底層運作的，是同一份 schema 被不同產業共享。",
+    "seeAll": "看底層怎麼跑"
+  },
+  "Work": {
+    "kicker": "Convergence",
+    "title": "正在成形的拓樸",
+    "viewAll": "完整軌跡",
+    "items": [
+      {
+        "index": "/01",
+        "phase": "Design",
+        "title": "Building object schema v0.1",
+        "layer": "Ontology",
+        "eta": "Q2 26",
+        "description": "建成環境的 TBox——空間、系統、設備、感測器、工單。Pydantic-first、USD-aware。整個平台往上長的那份共享定義。"
+      },
+      {
+        "index": "/02",
+        "phase": "In build",
+        "title": "Live property pipeline",
+        "layer": "Data",
+        "eta": "Q3 26",
+        "description": "MQTT、OPC UA 進 Postgres + property graph。感測器與 BMS 的次秒級讀數直接落到建築 Object 上，不經 dashboard 中介。"
+      },
+      {
+        "index": "/03",
+        "phase": "In build",
+        "title": "Derived property pipeline",
+        "layer": "Logic",
+        "eta": "Q3 26",
+        "description": "GPU 加速的 CFD、日照、人流 ML。輸出以 Derived Property 寫回同一個 Object——使用者分不出哪個是量到的、哪個是算出來的。"
+      },
+      {
+        "index": "/04",
+        "phase": "Prototype",
+        "title": "Spatial binding layer",
+        "layer": "Spatial",
+        "eta": "Q4 26",
+        "description": "Ontology Object 與 Omniverse Stage 上 USD Prim 的雙向綁定。點 Prim 拿 Object，改 Object Prim 跟著動。"
+      },
+      {
+        "index": "/05",
+        "phase": "Pilot",
+        "title": "首個商用 pilot",
+        "layer": "Pilot",
+        "eta": "Q4 26",
+        "description": "與台北一家開發商合作的端到端 pilot——從感測器灌入、衍生屬性運算，到空間化讀出，整套堆疊跑在一棟真實運作的建築上。"
+      }
+    ]
+  },
+  "Industries": {
+    "kicker": "Reasonable points of intervention",
+    "title": "Where this can plug in",
+    "items": [
+      { "id": "/0.1", "name": "建築管理",        "description": "建築落成後，BIM 不再是一份靜態檔案。感測器讀數、工單、事件、認證評分全部綁在空間節點上——物業經理、FM 工程師、維護團隊，看的是同一座會呼吸的模型。設計階段的決定，可以一路追溯到二十年後的維運。" },
+      { "id": "/0.2", "name": "工安管理",        "description": "工地與廠區的人員、設備、環境，跟模型上的位置直接對齊。視覺辨識、姿態與跌倒偵測、區域越界、PPE 合規——風險不再是事故發生後才被理解，而是即時在空間裡被指認。" },
+      { "id": "/0.3", "name": "智慧工廠",        "description": "產線、設備、能耗、物流動線、人員安全——全部綁回廠房空間。同一個座標系，產線經理、能源工程師、安全主管看的是同一個現場。瓶頸、異常、節能空間，在空間裡直接被指認，而不是埋在十份報表的交集處。" },
+      { "id": "/0.4", "name": "空間 AI 決策",    "description": "LLM 不再只處理文字。接上空間底層，它可以查感測器、讀模擬、跑情境、開工單。問它「這棟今天怎麼了」、「這區為什麼閒置」、「下週能耗能怎麼降」——答案不從報告生，從空間生。" }
+    ]
+  },
+  "CTA": {
+    "kicker": "Get in touch",
+    "headline": "在你的場域裡，",
+    "headlineB": "讓決策有座標。",
+    "description": "我們交付的不是一張 render——是一層活在空間裡的決策底層。整套堆疊跟我們的人，一起部署到你的建築、廠區、工地，或任何需要系統級判斷的場域。",
+    "button": "開始一場對話"
+  },
+  "Contact": {
+    "kicker": "Contact",
+    "title": "Tell us what you are building",
+    "subtitle": "每一封來信我們都會親自回覆——通常在一個工作日內。",
+    "name": "姓名",
+    "company": "公司／單位",
+    "email": "電子郵件",
+    "phone": "電話（可省略）",
+    "message": "專案說明",
+    "interest": "感興趣的能力",
+    "submit": "送出訊息",
+    "success": "訊息已收到。我們很快就會與您聯繫。",
+    "office":  { "label": "辦公室", "value": "台北，台灣" }
+  },
+  "Cases": {
+    "kicker": "Active surface",
+    "title": "正在收斂的系統",
+    "subtitle": "Ontology 是在出貨之前就開始成形的。這裡列的是當下還在收斂面上的構件——依各自從設計意圖到首次部署的軌跡位置排列。",
+    "filterAll": "All",
+    "filterDesign": "Design",
+    "filterBuild": "In build",
+    "filterPrototype": "Prototype",
+    "filterPilot": "Pilot"
+  },
+  "ChatDock": {
+    "placeholder": "問點什麼…",
+    "label": "AI 助理 · 即將推出",
+    "body": "這個對話框目前是占位介面。串接 AI 後會在這裡呈現對話串。"
+  },
+  "Footer": {
+    "tagline": "讓每個決策都有座標。",
+    "company": "維思孿生科技股份有限公司",
+    "address": "台北，台灣",
+    "rights": "保留一切權利。",
+    "sections": {
+      "company": "公司",
+      "work": "收斂中",
+      "contact": "聯絡"
+    },
+    "collab": {
+      "label": "學術合作",
+      "partner": "實踐大學 · VisionBase Lab"
+    }
+  }
+}
