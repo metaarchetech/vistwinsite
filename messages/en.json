@@ -169,7 +169,7 @@
     "intro": "Not mockups. These are windows live inside Omniverse Kit — the operating layer is built and running. Massing studies, glass ratios, pedestrian wind, per-unit daylight, factory energy, site personnel, FM tickets — behind every frame, an architect, a developer, a plant manager, or a facilities engineer is making a real call right now.",
     "anchor": {
       "src": "suite.jpg",
-      "alt": "VisusTwin suite running inside Omniverse Kit",
+      "alt": "VisTwin suite running inside Omniverse Kit",
       "family": "{ suite }",
       "name": "Live suite",
       "specs": "Omniverse Kit · nine families online: air / sun / water / carbon / safety / data / intelligence / stage / core"
